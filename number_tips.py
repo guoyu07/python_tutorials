@@ -1,7 +1,7 @@
 
 # -- coding: utf-8 --
 
-# 分割符合
+# 分割符方法
 def dash(str):
   print "-"*50
   print str
