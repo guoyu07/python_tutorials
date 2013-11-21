@@ -2,10 +2,10 @@
 # -- coding: utf-8 --
 
 # 分割符方法
-def dash(str):
+def dash(str=''):
   print "-"*50
-  print str
-
+  if not str.isspace():
+    print str
 
 # 字符
 dash("字符")
