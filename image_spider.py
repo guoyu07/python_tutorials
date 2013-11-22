@@ -18,7 +18,6 @@ class ImageSpider:
 
       images = re.findall(r'<img src="http://(.*?)>', html)
       self.save_images(name, images)
-      index = 0
 
     file.close()
 
