@@ -4,6 +4,9 @@ import re
 import urllib
 import urllib2
 
+from random import randint
+from time import sleep
+
 class ImageSpider:
 
   def fetch(self):
@@ -18,6 +21,7 @@ class ImageSpider:
 
       images = re.findall(r'<img src="http://(.*?)>', html)
       self.save_images(name, images)
+      sleep(randint(1,3))
 
     file.close()
 
