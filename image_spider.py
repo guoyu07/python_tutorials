@@ -1,12 +1,12 @@
 # -- coding: utf-8 --
 
 import re
+import urllib
 import urllib2
 
 class ImageSpider:
 
-  @classmethod
-  def fetch(cls):
+  def fetch(self):
     file = open("./doc/college_names.txt", 'r')
     for line in file:
       name = line.strip()
@@ -16,15 +16,24 @@ class ImageSpider:
       html = urllib2.urlopen(url).read()
       #print "Html result %s" %html
 
-      images = re.findall(r'<img(.*)>', html)
+      images = re.findall(r'<img src="http://(.*?)>', html)
+      self.save_images(name, images)
       index = 0
-      for image in images:
-        if index < 3:
-          index += 1
-          print image
-        else:
-          break
 
     file.close()
 
-ImageSpider.fetch()
+  def save_images(self, name, images):
+    index = 0
+    for image in images:
+      if index < 3:
+        index += 1
+        end_src = image.index('"')
+        image_url = "http://" + image[0:end_src]
+        image_name = "./doc/images/" + name + str(index) + ".jpg"
+        print "image_url %s" %image_url
+        print "image_name %s" %image_name
+        urllib.urlretrieve(image_url, image_name)
+      else:
+        break
+
+ImageSpider().fetch()
