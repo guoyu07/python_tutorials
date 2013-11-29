@@ -62,3 +62,9 @@ while 1:
     print i
   if i == 10:
     break
+
+dash('lish comprehensions')
+print "[expression for variable in list]"
+print "[expression for variable in list if condition]"
+numbers = [1,2,3,4,5]
+print [i*2 for i in numbers if i%2 == 0]
