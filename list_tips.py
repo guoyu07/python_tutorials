@@ -44,8 +44,12 @@ for color in colors:
 if 'red' in colors:
   print "red in colors"
 
-dash("range function")
+dash("range function return list")
 for i in range(3):
+  print i
+
+dash("xrange function return a value")
+for i in xrange(3):
   print i
 
 dash ("while loop")
@@ -68,3 +72,5 @@ print "[expression for variable in list]"
 print "[expression for variable in list if condition]"
 numbers = [1,2,3,4,5]
 print [i*2 for i in numbers if i%2 == 0]
+
+dash
