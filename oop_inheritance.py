@@ -16,7 +16,7 @@ class ClassPerson:
     print "sleep"
 
 
-class ClassMale:
+class ClassMale(ClassPerson):
 
   def __init__(self):
     print "This is a Male"
@@ -31,7 +31,7 @@ class ClassMale:
     print "and sleep"
 
 
-class ClassFemale:
+class ClassFemale(ClassPerson):
 
   def __init__(self):
     print "This is a Female"
@@ -55,6 +55,7 @@ p.lifestyle()
 print "-"*50
 sleep(2)
 
+print "ClassMale is inheritance ClassPerson %s" %issubclass(ClassMale, ClassPerson)
 m = ClassMale()
 m.greeting()
 m.lifestyle()
@@ -62,6 +63,7 @@ m.lifestyle()
 print "-"*50
 sleep(2)
 
+print "ClassFemale is inheritance ClassPerson %s" %issubclass(ClassFemale, ClassPerson)
 fm = ClassFemale()
 fm.greeting()
 fm.lifestyle()
