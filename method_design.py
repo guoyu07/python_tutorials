@@ -113,3 +113,11 @@ def count_number(number):
 
 print "4 recursive count: %s" %count_number(4)
 
+def count_number_v2(number):
+  if number == 1:
+    return number
+  else:
+    return number * count_number_v2(number - 1)
+
+print "5 recursive count: %s" %count_number_v2(5)
+
