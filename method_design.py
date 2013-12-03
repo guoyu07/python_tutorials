@@ -104,3 +104,12 @@ def test_global(name):
 name = 'Alice'
 test_global('Name:')
 
+dash('recursive method')
+def count_number(number):
+  ret = number
+  for i in range(1, number):
+    ret *= i
+  return ret
+
+print "4 recursive count: %s" %count_number(4)
+
