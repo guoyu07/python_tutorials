@@ -54,4 +54,20 @@ print 'init list: %s' %old_list
 test_list(old_list)
 print 'final list: %s' %old_list
 
+dash('copy list [:]')
+print "old list %s" %old_list
+l = old_list
+print "l is old_list %s" %(l is old_list)
+g = old_list[:]
+print "g is old_list %s" %(g is old_list)
 
+dash('default parameter value')
+def default_param(name='Henry', age='26'):
+  print 'Name: %s, Age: %s' %(name,age)
+
+print "no parameters ():"
+default_param()
+print "one parameters ():"
+default_param('Alice')
+print "full parameters ():"
+default_param('James', 25)
