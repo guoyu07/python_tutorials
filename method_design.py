@@ -90,4 +90,17 @@ any_param('Second', 26)
 print "any_param('Third', 26, 20, name='Henry', age=26)"
 any_param('Third', 26, 20, name='Henry', age=26)
 
+dash('external parameter')
+def test_external(param):
+  print param + name
+
+name = 'Henry'
+test_external('Name:')
+
+dash('global parameter')
+def test_global(name):
+  print name + globals()['name']
+
+name = 'Alice'
+test_global('Name:')
 
