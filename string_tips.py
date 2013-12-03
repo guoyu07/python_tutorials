@@ -12,6 +12,9 @@ print str
 dash("calculate str length len()")
 print len(str)
 
+dash('use startswith()')
+print "%s starts with 'Say': %s" %(str,str.startswith('Say'))
+
 dash("[index] to index string")
 print str[0]
 
