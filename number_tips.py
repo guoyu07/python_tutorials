@@ -115,7 +115,7 @@ foo = math.ceil
 print foo(1.23)
 
 dash('if elif else')
-def parse_number(number):
+def test_number(number):
   if number < 0:
     print "%i is lower than 0" % number
   elif number == 0:
@@ -123,9 +123,9 @@ def parse_number(number):
   else:
     print "%i is bigger than 0" % number
 
-parse_number(-2)
-parse_number(0)
-parse_number(5)
+test_number(-2)
+test_number(0)
+test_number(5)
 
 # 看看 Python 的异常
 dash("Python 的异常")

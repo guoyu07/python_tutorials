@@ -44,7 +44,7 @@ class ClassFemale(ClassPerson):
     print "and eat"
     print "and shopping"
     print "and eat"
-    print "and watching tv"
+    print "and watching TV"
     sleep(1)
     print "finally sleep"
 
