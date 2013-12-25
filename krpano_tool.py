@@ -40,8 +40,9 @@ def _rename_cube_folders(path):
 
 def _copy_image(pano_path, image_name, tile_path):
     input_image = _splice_path(pano_path, image_name)
-    shutil.copy(input_image, tile_path)
-    return _splice_path(tile_path, image_name)
+    origin_image = _splice_path(tile_path, image_name)
+    os.link(input_image, origin_image)
+    return origin_image
 
 def _trim_path(parent_path, path):
     path = path.replace(parent_path + os.path.sep, "", 1)
