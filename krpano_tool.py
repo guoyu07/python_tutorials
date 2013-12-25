@@ -10,8 +10,7 @@ There are four ways to use this module.
 """
 
 from datetime import datetime
-import string, random, shutil
-import os, shutil, subprocess, zipfile
+import string, random, os, subprocess, zipfile
 
 KRPANO_PATH = "/Users/leehenry/Desktop/数据运营管理平台/krpanotools-1.16.9-mac64"
 KRPANO_CUBE_CONFIG = KRPANO_PATH + "/templates/huilian_cube.config"
