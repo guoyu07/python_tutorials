@@ -5,8 +5,8 @@ import os
 
 krpano_path = "/Users/leehenry/Desktop/数据运营管理平台/krpanotools-1.16.9-mac64"
 image_path = "/Users/leehenry/backup/krpano_test"
-folder_path = "%s/abudhabi_20080731_15/cube" %(image_path)
-krpano_command = "%s/kmakemultires -config=%s/templates/hcube.config %s/abudhabi_20080731_15.jpg"%(krpano_path, krpano_path, image_path)
+folder_path = "%s/cube" %(image_path)
+krpano_command = "%s/kmakemultires -config=%s/templates/tc_huilian_cube.config %s/abudhabi_20080731_15.jpg"%(krpano_path, krpano_path, image_path)
 
 def rename_folder():
     print "rename folder..."
