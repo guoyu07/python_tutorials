@@ -10,7 +10,13 @@ There are four ways to use this module.
 """
 
 from datetime import datetime
-import string, random, os, subprocess, zipfile
+import string
+import random
+import os
+import sys
+import subprocess
+import zipfile
+import shutil
 
 KRPANO_PATH = "/Users/leehenry/Desktop/数据运营管理平台/krpanotools-1.16.9-mac64"
 KRPANO_CUBE_CONFIG = KRPANO_PATH + "/templates/huilian_cube.config"
@@ -31,7 +37,7 @@ def _secure_imagename():
     return '_'.join([datetime.now().strftime("%Y%m%d%H%M%S%f"), _random_number()])
 
 def _rename_cube_folders(path):
-    folder_path = "%s/cube" %(path)
+    folder_path = "%s/cube/tiles" %(path)
     folders = { '1': '512', '2': '1024', '3': '2048' }
     for key,value in folders.iteritems():
         os.rename(os.path.join(folder_path, key),
@@ -61,6 +67,8 @@ def _zip_folder(pano_path, tile_path, output_file):
             zip_file.write(absolute_path, relative_path)
     zip_file.close()
 
+def _remove_folder(tile_path):
+    shutil.rmtree(tile_path)
 
 def tile_cube(path, image):
     print "start tile cube"
@@ -99,7 +107,13 @@ def tile_full(pano_path, image_name):
 
     origin_image = _copy_image(pano_path, image_name, tile_path)
 
-    tile_cube(tile_path, origin_image)
-    tile_sphere()
-    tile_cover()
-    _zip_folder(pano_path, tile_path, zip_file)
+    try:
+        tile_cube(tile_path, origin_image)
+        tile_sphere()
+        tile_cover()
+    except Exception:
+        raise "tile caused exception"
+    else:
+        _zip_folder(pano_path, tile_path, zip_file)
+    finally:
+        _remove_folder(tile_path)
