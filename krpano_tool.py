@@ -22,6 +22,16 @@ KRPANO_PATH = "/Users/leehenry/Desktop/数据运营管理平台/krpanotools-1.16
 KRPANO_CUBE_CONFIG = KRPANO_PATH + "/templates/huilian_cube.config"
 KRPANO_SPHERE_CONFIG = KRPANO_PATH + "/templates/huilian_sphere.config"
 KMAKEMULTIRES_TOOL = KRPANO_PATH + "/kmakemultires"
+KMAKETILES_TOOL = KRPANO_PATH + "/kmaketiles"
+
+
+CUBE_TILE_PATH = "/cube/tiles"
+CUBE_FOLDERS = { '1': '512', '2': '1024', '3': '2048' }
+
+SPHERE_PATH = '/sphere/'
+SPHERE_SETTINGS = { '1024x512': [['512h.jpg', '95'], ['512m.jpg', '85'], ['512l.jpg', '75']],
+                    '2048x1024': [['1024h.jpg', '95'], ['1024m.jpg', '85'], ['1024l.jpg', '75']],
+                    '4096x2048': [['2048h.jpg', '95'], ['2048m.jpg', '85'], ['2048l.jpg', '75']]}
 
 def _make_directory(directory):
     if not os.path.exists(directory):
@@ -37,9 +47,8 @@ def _secure_imagename():
     return '_'.join([datetime.now().strftime("%Y%m%d%H%M%S%f"), _random_number()])
 
 def _rename_cube_folders(path):
-    folder_path = "%s/cube/tiles" %(path)
-    folders = { '1': '512', '2': '1024', '3': '2048' }
-    for key,value in folders.iteritems():
+    folder_path = path + CUBE_TILE_PATH
+    for key,value in CUBE_FOLDERS.iteritems():
         os.rename(os.path.join(folder_path, key),
                   os.path.join(folder_path, value))
 
@@ -87,9 +96,21 @@ def tile_cube(path, image):
     print "end tile cube"
 
 
-def tile_sphere():
+def tile_sphere(tile_path, origin_image):
     print "tile sphere"
+    for resize,spheres in SPHERE_SETTINGS.iteritems():
+        for sphere in spheres:
+            output_image = tile_path + SPHERE_PATH + sphere[0]
+            sphere_command = "%s %s %s 0 -resize=%s -jpegquality=%s" %(KMAKETILES_TOOL, origin_image, output_image, resize, sphere[1])
+            pcube = subprocess.Popen(sphere_command, shell=True, stderr=subprocess.PIPE)
 
+            while True:
+                out = pcube.stderr.read(1)
+                if out == '' and pcube.poll() != None:
+                    break
+                if out != '':
+                    sys.stdout.write(out)
+                    sys.stdout.flush()
     print "end tile sphere"
 
 
@@ -109,10 +130,10 @@ def tile_full(pano_path, image_name):
 
     try:
         tile_cube(tile_path, origin_image)
-        tile_sphere()
+        #tile_sphere(tile_path, origin_image)
         tile_cover()
     except Exception:
-        raise "tile caused exception"
+        print "tile caused exception"
     else:
         _zip_folder(pano_path, tile_path, zip_file)
     finally:
