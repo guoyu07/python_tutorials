@@ -73,4 +73,73 @@ print "[expression for variable in list if condition]"
 numbers = [1,2,3,4,5]
 print [i*2 for i in numbers if i%2 == 0]
 
-dash
+dash('Accessing Values in Lists')
+init_list = [1,2,3,4,5]
+print "init_list:", init_list
+print "init_list[0]:", init_list[0]
+print "init_list[-1]:", init_list[-1]
+print "init_list[0:2]:", init_list[0:2]
+print "init_list[2:4]:", init_list[2:4]
+print "init_list[-2:-1]:", init_list[-2:-1]
+
+dash('Loop list with index')
+init_list = [19,87,11,28]
+print "init_list:", init_list
+for index, value in enumerate(init_list):
+    print index, value
+
+dash('Get proper resolution')
+resolutions = [{"height": 800, "width": 480},
+               {"height": 1280, "width": 800},
+               {"height": 1920, "width": 1200}]
+
+def proper_resolution(height, resolutions):
+    resolution = resolutions[0]
+    resolution_size = len(resolutions)
+    for index, value in enumerate(resolutions):
+        current_height = value["height"]
+        if height <= current_height:
+            if index == 0:
+                  resolution = value
+            else:
+                  former = resolutions[index-1]
+                  former_height = former["height"]
+                  if (height - former_height) <= (current_height - height):
+                      resolution = former
+                  else:
+                      resolution = value
+            break
+        else:
+            if index + 1 == resolution_size:
+                  resolution = value
+                  break
+    return resolution
+
+print "resolutions:", resolutions
+height = 600
+print "height:", height
+print "proper_resolution:", proper_resolution(height, resolutions)
+
+height = 850
+print "height:", height
+print "proper_resolution:", proper_resolution(height, resolutions)
+
+height = 1000
+print "height:", height
+print "proper_resolution:", proper_resolution(height, resolutions)
+
+height = 1100
+print "height:", height
+print "proper_resolution:", proper_resolution(height, resolutions)
+
+height = 1600
+print "height:", height
+print "proper_resolution:", proper_resolution(height, resolutions)
+
+height = 1700
+print "height:", height
+print "proper_resolution:", proper_resolution(height, resolutions)
+
+height = 2000
+print "height:", height
+print "proper_resolution:", proper_resolution(height, resolutions)

@@ -81,6 +81,9 @@ def any_param(title, *params, **keyvalue):
   print params
   print keyvalue
 
+  print keyvalue.get('name', None)
+  print keyvalue.get('age', 20)
+
 print "any_param('First')"
 any_param('First')
 
