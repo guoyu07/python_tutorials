@@ -39,3 +39,25 @@ print "Ebooks dictionaries %s" %ebooks
 print 'pop()'
 ebooks.pop('Ruby')
 print "Ebooks dictionaries %s" %ebooks
+
+
+dash('sorted list of dict by lower string')
+data = [{"pinyin": "asc"},
+    {"pinyin": "abc"},
+    {"pinyin": "henry"},
+    {"pinyin": "jack"},
+    {"pinyin": "des"}]
+print data
+sortedlist = sorted(data, key=lambda k: k['pinyin'])
+print "sorted list is: %s" %sortedlist
+
+
+dash('sorted list of dict by pinyin')
+provinces = [{"pinyin": "SHANGHAI"},
+    {"pinyin": "JIANGSU"},
+    {"pinyin": "FUJIAN"},
+    {"pinyin": "HEILONGJIANG"},
+    {"pinyin": "ANHUI"}]
+print data
+newlist = sorted(provinces, key=lambda k: k['pinyin'])
+print "sorted list is: %s" %newlist
