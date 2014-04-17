@@ -41,6 +41,8 @@ def _parse_result(result):
 def send_sms(mobile, content):
     host = "http://esms2.etonenet.com/sms/mt"
     command = "MT_REQUEST"
+    spid = "spid"
+    sppassword = "sppassword"
     da = mobile
     gbk_content = content.encode('gbk')
     sm = gbk_content.encode('hex')
@@ -58,10 +60,11 @@ def send_sms(mobile, content):
 
 
 
-code = 123456
+code = 222222
 message_template = u"走走验证码：{}（30分钟内有效），仅用于注册不能重复使用，为了账号安全请勿告知他人。"
 content = message_template.replace("{}", unicode(code))
 
+# content = u"短信内容"
 
 send_sms('8615026612137', content)
 
