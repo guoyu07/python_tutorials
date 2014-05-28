@@ -33,4 +33,12 @@ import datetime
 before = datetime.datetime.now()
 after  = datetime.datetime.now()
 
-hours = (after - before).total_seconds() // 3600
+# hours
+print (after - before).total_seconds() // 3600
+
+
+utc_before = datetime.datetime.utcnow()
+utc_after  = datetime.datetime.utcnow()
+
+# hours
+print (utc_after - utc_before).total_seconds() // 3600
