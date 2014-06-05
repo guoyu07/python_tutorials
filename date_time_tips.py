@@ -42,3 +42,9 @@ utc_after  = datetime.datetime.utcnow()
 
 # hours
 print (utc_after - utc_before).total_seconds() // 3600
+
+# Can't subtract datetime and timestamp in django?
+# http://stackoverflow.com/questions/10594314/cant-subtract-datetime-and-timestamp-in-django
+import datetime
+from django.utils.timezone import utc
+now = datetime.datetime.utcnow().replace(tzinfo=utc)
