@@ -61,3 +61,14 @@ provinces = [{"pinyin": "SHANGHAI"},
 print data
 newlist = sorted(provinces, key=lambda k: k['pinyin'])
 print "sorted list is: %s" %newlist
+
+
+dash('creates a new dictionary with keys from seq and values set to value.')
+days = 3
+s1 = dict.fromkeys(xrange(days))
+# >>> s1
+# {0: None, 1: None, 2: None}
+
+s2 = dict.fromkeys(xrange(days), [])
+# >>> s2
+# {0: [], 1: [], 2: []}
