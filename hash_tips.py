@@ -94,7 +94,7 @@ data1 = {'name': 'a', 'age': 2, 'tags': ['ruby', 1]}
 data1_md5 = hashlib.md5(json.dumps(data1, sort_keys=True)).hexdigest()
 print data1_md5
 
-data2 = {'age': 2, 'name': 'a', 'tags': ['ruby', 2]}
+data2 = {'name': 'a', 'tags': ['ruby', 2], 'age': 2}
 data2_md5 = hashlib.md5(json.dumps(data2, sort_keys=True)).hexdigest()
 print data2_md5
 
