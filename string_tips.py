@@ -34,3 +34,22 @@ if language.lower() == 'ruby':
 else:
   print "OK. you like %s. But I like Ruby the most." %language
 
+str1 = """first content"""
+print str1 + """ second content"""
+print """{}, test""".format("Hi")
+
+dash("weather string")
+temp = "23℃~32℃"
+weather =  "阵雨转阴"
+
+t_i = temp.find('℃')
+if t_i > 0:
+    print temp[0:t_i]
+else:
+    print "temp not contains ~"
+
+w_i = weather.find('转')
+if w_i > 0:
+    print weather[0:w_i]
+else:
+    print "weather not contains ~"
