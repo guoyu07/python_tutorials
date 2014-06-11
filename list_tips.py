@@ -143,3 +143,7 @@ print "proper_resolution:", proper_resolution(height, resolutions)
 height = 2000
 print "height:", height
 print "proper_resolution:", proper_resolution(height, resolutions)
+
+dash('integer list join to string')
+list_demo = [1, 2, 3, 4]
+print '_'.join([str(i) for i in list_demo])
