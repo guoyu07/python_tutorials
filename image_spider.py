@@ -7,6 +7,9 @@ import urllib2
 from random import randint
 from time import sleep
 
+from os.path import basename
+from urlparse import urlsplit
+
 class ImageSpider:
 
   def fetch(self):
@@ -39,4 +42,15 @@ class ImageSpider:
       else:
         break
 
-ImageSpider().fetch()
+  def url2name(self, url):
+      return basename(urlsplit(url)[2])
+
+  def split_url(self, url):
+      print url
+      print self.url2name(url)
+
+
+# ImageSpider().fetch()
+
+image = "http://api.dev.test1.demo.org.cn/uploads/76/de/76de3eb753a81f24038cbc0d4f34bba9.jpg"
+ImageSpider().split_url(image)
